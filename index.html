@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qBlock - block based IDE for Beginners</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/blockly@10.2.2/blockly.min.js"></script>
+    <script src="https://unpkg.com/blockly@10.2.2/msg/js/ru.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div class="topbar">
+        <div class="logo-area">
+            <img src="qbit.png" alt="qBlock Logo" class="site-logo">
+        </div>
+        <div class="topbar-buttons">
+            <button id="generateCode">Сгенерировать код</button>
+            <button id="downloadCode">Скачать .ino</button>
+        </div>
+    </div>
+    <main>
+        <div id="blocklyDiv"></div>
+        <div id="codeOutput">
+            <pre><code id="generatedCode"></code></pre>
+        </div>
+    </main>
+    <xml id="toolbox" style="display:none">
+        <category name="Digital" colour="#7ED320">
+            <block type="arduino_digital_write"></block>
+            <block type="arduino_digital_read"></block>
+            <block type="arduino_pin_mode"></block>
+        </category>
+        <category name="Analog" colour="#4990E2">
+            <block type="arduino_analog_write"></block>
+            <block type="arduino_analog_read"></block>
+        </category>
+        <category name="Servo" colour="#FFBE00">
+            <block type="arduino_servo_write"></block>
+            <block type="arduino_servo_read"></block>
+        </category>
+        <category name="Time" colour="#FF8B1A">
+            <block type="arduino_delay"></block>
+            <block type="arduino_delay_microseconds"></block>
+            <block type="arduino_millis"></block>
+        </category>
+        <category name="Serial" colour="#FEAA16">
+            <block type="arduino_serial_begin"></block>
+            <block type="arduino_serial_print"></block>
+            <block type="arduino_serial_println"></block>
+        </category>
+        <category name="Control" colour="#FEAA16">
+            <block type="controls_if"></block>
+            <block type="controls_repeat_ext"></block>
+        </category>
+        <category name="Math" colour="#BD0FE0">
+            <block type="math_number"></block>
+            <block type="math_arithmetic"></block>
+        </category>
+        <category name="Variables" colour="#Ff6780" custom="VARIABLE"></category>
+    </xml>
+    <script src="script.js"></script>
+</body>
+</html> 

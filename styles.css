@@ -1,0 +1,328 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #e3f2fd;
+    color: #222;
+    margin: 0;
+}
+
+.topbar {
+    background: linear-gradient(90deg, #6ec6ff 0%, #2196f3 100%);
+    height: 56px;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(33,150,243,0.10);
+    border-bottom: 2px solid #b3e5fc;
+    border-radius: 16px 16px 0 0;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    height: 56px;
+}
+
+.site-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    background: transparent;
+    box-shadow: none;
+    margin-right: 0;
+}
+
+.site-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.site-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    margin-left: 8px;
+    font-weight: 400;
+}
+
+.topbar-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+button {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 18px;
+    background: #fff;
+    color: #4990E2;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(41,144,226,0.08);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+button:hover {
+    background: #eaf4fd;
+    color: #3a7bd5;
+    box-shadow: 0 4px 16px rgba(41,144,226,0.12);
+}
+
+main {
+    display: flex;
+    height: calc(100vh - 56px);
+    background: #e3f2fd;
+    border-radius: 0 0 16px 16px;
+    border: 2px solid #b3e5fc;
+    border-top: none;
+    box-shadow: 0 4px 24px rgba(33,150,243,0.08);
+    margin: 0;
+}
+
+#blocklyDiv {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    margin-left: 0;
+    background: #fff url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1.2" fill="%23b3e5fc"/></svg>') repeat;
+    border-radius: 0 0 16px 0;
+    box-shadow: 0 2px 16px rgba(33,150,243,0.04);
+    border-right: 2px solid #b3e5fc;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+#codeOutput {
+    width: 340px;
+    padding: 24px 20px;
+    background: #fff;
+    border-left: 2px solid #b3e5fc;
+    border-radius: 0 0 0 16px;
+    box-shadow: 0 2px 16px rgba(33,150,243,0.04);
+    overflow-y: auto;
+}
+
+#generatedCode {
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-size: 15px;
+    background: #f6faff;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 0;
+    color: #222;
+}
+
+/* Меню категорий (toolbox) */
+.blocklyToolboxDiv {
+    background: #fff;
+    border-radius: 16px 0 0 16px;
+    box-shadow: 2px 0 12px rgba(33,150,243,0.06);
+    width: 110px !important;
+    min-width: 110px;
+    padding: 24px 0;
+    margin: 0;
+    height: calc(100vh - 56px) !important;
+    top: 56px !important;
+    left: 0 !important;
+    position: fixed !important;
+    z-index: 100;
+}
+
+.blocklyToolboxContents {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.blocklyTreeRow {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 4px 8px !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    padding: 12px 8px !important;
+    min-height: 40px !important;
+    position: relative !important;
+    transition: background 0.2s !important;
+    border: none !important;
+    border-radius: 8px !important;
+    background: transparent !important;
+    text-align: center !important;
+}
+
+.blocklyTreeRow[aria-selected="true"] {
+    background: #e3f2fd !important;
+}
+
+.blocklyTreeRow .blocklyTreeLabel {
+    flex: none !important;
+    text-align: center !important;
+    width: 100% !important;
+    display: block !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+
+.blocklyTreeRowContentContainer {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px 4px !important;
+    width: 100% !important;
+    border: none !important;
+    text-align: center !important;
+}
+
+.blocklyTreeIcon {
+    display: none !important;
+}
+
+.blocklyTreeRoot {
+    border: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+.blocklyTreeLabel {
+    margin-left: 4px;
+    text-align: left;
+}
+
+/* Flyout */
+.blocklyFlyout {
+    background: #fff;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: 2px 0 12px rgba(33,150,243,0.06);
+}
+.blocklyFlyoutBackground {
+    fill: #fff !important;
+    stroke: none !important;
+    border-radius: 0 !important;
+}
+
+/* Блоки */
+.blocklyPath {
+    stroke-width: 2.5px;
+    rx: 12px;
+    filter: none;
+    stroke: rgba(34,34,34,0.25);
+}
+
+.blocklyPathLight, 
+.blocklyPathDark {
+    stroke: transparent !important;
+    fill: none !important;
+}
+
+.blocklyText {
+    font-size: 15px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    fill: #fff;
+}
+
+/* Цвета обводки для разных типов блоков */
+.blocklyPath[fill="#7ED320"] { stroke: #6CAF1B !important; }   /* Digital */
+.blocklyPath[fill="#4990E2"] { stroke: #3A73B5 !important; }   /* Analog */
+.blocklyPath[fill="#FFBE00"] { stroke: #CC9800 !important; }   /* Servo */
+.blocklyPath[fill="#FF8B1A"] { stroke: #CC6F15 !important; }   /* Time */
+.blocklyPath[fill="#FEAA16"] { stroke: #CB8712 !important; }   /* Serial/Control */
+.blocklyPath[fill="#BD0FE0"] { stroke: #980BB3 !important; }   /* Math */
+.blocklyPath[fill="#FF6780"],
+.blocklyPath[fill="#Ff6780"] { stroke: #CC5266 !important; }   /* Variables */
+
+/* Скроллбары */
+.blocklyScrollbarHandle {
+    fill: #2196f3 !important;
+    opacity: 0.7;
+}
+.blocklyScrollbarBackground {
+    fill: #e3f2fd !important;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background: #e3eaf3;
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #c7d7ee;
+    border-radius: 8px;
+}
+
+/* Удаляю flexbox-эксперимент */
+/* .blocklyToolboxContents, .blocklyTreeRoot {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+} */
+
+#toolboxPanel {
+    width: 220px;
+    background: #fff;
+    border-radius: 16px 0 0 16px;
+    box-shadow: 2px 0 12px rgba(33,150,243,0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 24px 0;
+    margin: 0;
+    height: calc(100vh - 56px);
+}
+.toolbox-category {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 24px;
+    margin: 4px 12px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    color: #222;
+}
+.toolbox-category[data-category="Digital"] { color: #7ED320; }
+.toolbox-category[data-category="Analog"] { color: #4990E2; }
+.toolbox-category[data-category="Servo"] { color: #FFBE00; }
+.toolbox-category[data-category="Time"] { color: #FF8B1A; }
+.toolbox-category[data-category="Serial"] { color: #FEAA16; }
+.toolbox-category[data-category="Control"] { color: #FEAA16; }
+.toolbox-category[data-category="Math"] { color: #BD0FE0; }
+.toolbox-category[data-category="Variables"] { color: #Ff6780; }
+.toolbox-category.active, .toolbox-category:active, .toolbox-category:focus { color: inherit !important; }
+.toolbox-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.toolbox-label {
+    flex: 1;
+    text-align: left;
+}
+
+.blocklyBlockCanvas .block-appear {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.4s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1);
+}
+.blocklyBlockCanvas .block-appear.block-appear-active {
+    opacity: 1;
+    transform: none;
+}
